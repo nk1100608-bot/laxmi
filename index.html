@@ -108,7 +108,10 @@
 
     <script>
         var MY_WHATSAPP_NUMBER = "917004164070"; 
-        var SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7fQg1gedkb6PVxK7qWdEcyHI1m5WcwP0Qt5C2ql_9HOLCar0LbmjCctYeGxu4DrEQ6qvI6ePVrBL9/pub?output=csv";
+        var TARGET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7fQg1gedkb6PVxK7qWdEcyHI1m5WcwP0Qt5C2ql_9HOLCar0LbmjCctYeGxu4DrEQ6qvI6ePVrBL9/pub?output=csv";
+        
+        // मोबाइल की वाइट स्क्रीन की समस्या को बाईपास करने वाला प्रोक्सी लिंक
+        var SHEET_URL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(TARGET_URL);
 
         var globalProducts = [];
 
@@ -125,7 +128,6 @@
                         for (var i = 1; i < lines.length; i++) {
                             if (!lines[i].trim()) continue;
                             
-                            // मोबाइल के पुराने ब्राउज़र्स के लिए सुरक्षित कोमा स्प्लिटिंग
                             var cols = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                             
                             if (cols.length >= 2) {
@@ -177,7 +179,7 @@
 
                 container.innerHTML += '<div class="product-card">' +
                     '<div class="product-image-wrapper">' +
-                    '<img id="img-' + index + '" src="' + product.img1 + '" alt="' + product.name + '" onerror="this.src=\'https://placehold.co/400x400?text=New+Laxmi+Electronics\'\保持">' +
+                    '<img id="img-' + index + '" src="' + product.img1 + '" alt="' + product.name + '" onerror="this.src=\'https://placehold.co/400x400?text=New+Laxmi+Electronics\'">' +
                     dotsHtml +
                     '</div>' +
                     '<div class="product-info">' +
